@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, Text, View } from 'react-native'
+import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import NavOptions from '../components/NavOptions';
 import SearchBar from 'react-native-elements/dist/searchbar/SearchBar-ios';
@@ -9,20 +9,9 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView>
-      <View style={[
-        {
-          alignItems: 'center',
-          justifyContent: 'center',
-        }
-      ]}>
+      <View style={styles.container}>
         <Image
-          style={[
-            {
-              width: 200,
-              height: 200,
-              resizeMode: 'contain'
-            }
-          ]}
+          style={styles.image}
           source={require('../assets/google_logo.png')}
         />
         <SearchBar
@@ -36,5 +25,17 @@ const HomeScreen = () => {
     </SafeAreaView >
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain'    
+  }
+});
 
 export default HomeScreen
