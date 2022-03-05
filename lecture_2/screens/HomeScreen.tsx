@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Image, SafeAreaView, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import NavOptions from '../components/NavOptions';
 import SearchBar from 'react-native-elements/dist/searchbar/SearchBar-ios';
@@ -7,19 +7,14 @@ import SearchBar from 'react-native-elements/dist/searchbar/SearchBar-ios';
 const HomeScreen = () => {
   const [search, setSearch] = useState('');
 
-  const updateSearch = (search) => {
-    console.log('search', search)
-    setSearch(search);
-  };
-
   return (
     <SafeAreaView>
       <View style={[
-            {
-              alignItems: 'center',
-              justifyContent: 'center',
-            }
-          ]}>
+        {
+          alignItems: 'center',
+          justifyContent: 'center',
+        }
+      ]}>
         <Image
           style={[
             {
@@ -29,15 +24,13 @@ const HomeScreen = () => {
             }
           ]}
           source={require('../assets/google_logo.png')}
-          />
-
+        />
         <SearchBar
           placeholder="Type Here..."
-          onChangeText={updateSearch}
+          onChangeText={(text: string) => setSearch(text)}
           showCancel={false}
           value={search}
         />
-
         <NavOptions />
       </View>
     </SafeAreaView >
