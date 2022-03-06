@@ -1,11 +1,8 @@
 import HomeScreen from './screens/HomeScreen';
-import { TailwindProvider } from 'tailwind-rn';
-import utilities from './tailwind.json';
+import React from 'react';
 
 const App = () => (
-  <TailwindProvider utilities={utilities}>
-    <HomeScreen />
-  </TailwindProvider>
+  <HomeScreen />
 );
 
 export default App;
