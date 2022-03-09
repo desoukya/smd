@@ -11,13 +11,13 @@ app.post('/universities', function (req, res) {
 });
 
 app.get('/locations/:countryCode', function(req, res) {
-  const country = req.params.countryCode;
-  return res.send(locations[country.toUpperCase()]);
+  const { countryCode } = req.params;
+  return res.send(locations[countryCode.toUpperCase()]);
 });
 
 app.get('/universities/:countryCode', function(req, res) {
-  const country = req.params.countryCode;
-  return res.send(universities[country.toUpperCase()]);
+  const { countryCode } = req.params;
+  return res.send(universities[countryCode.toUpperCase()]);
 });
 
 app.listen(3000, function() {
