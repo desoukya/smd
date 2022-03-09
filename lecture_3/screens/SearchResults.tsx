@@ -3,14 +3,14 @@ import { useEffect } from "react";
 import * as axios from 'axios';
 import { Button, Dimensions, SafeAreaView, StyleSheet, Text } from "react-native";
 import { useRoute } from "@react-navigation/native";
-import MapView from 'react-native-maps';
-import MapMarkers from "../components/MapMarkers";
+import MapView, { Marker } from 'react-native-maps';
 
 const SearchResults = () => {
   const route = useRoute<RouteProps>();
   const { term } = route.params;
 
   const [country, setCountry] = useState<GeocodeResult>();
+  const [universities, setUniversity] = useState<University[]>();
   const [_, setViewport] = useState<Region>();
 
   const { width, height } = Dimensions.get('window');
@@ -22,10 +22,13 @@ const SearchResults = () => {
   }
 
   useEffect(() => {
-    axios.default
-      .get(`http://localhost:3000/locations/${term}`)
-      .then(({ data }) => {
-        if (data) setCountry(data);
+    Promise.all([
+      axios.default.get(`http://localhost:3000/locations/${term}`),
+      axios.default.get(`http://localhost:3000/universities/${term}`),
+    ])
+      .then(([{ data: locationResults }, { data: universitiesResults }]) => {
+        if (locationResults) setCountry(locationResults);
+        if (universitiesResults) setUniversity(universitiesResults);
       });
   }, []);
 
@@ -51,7 +54,19 @@ const SearchResults = () => {
             longitudeDelta, // delta between origin bounds and client viewport
           }}
         >
-          <MapMarkers country={term} />
+          {
+            universities?.map((marker: University, index: number) => (
+              <Marker
+                key={index}
+                coordinate={{
+                  latitude: marker.lat,
+                  longitude: marker.lng,
+                }}
+                title={Marker.name}
+                description={Marker.name}>
+              </Marker>
+            ))
+          }
         </MapView>
       }
     </SafeAreaView>
@@ -106,5 +121,9 @@ type RegionCoordinates = {
 type Region = {
   region: RegionCoordinates;
 }
-
+type University = {
+  name: string;
+  lat: number;
+  lng: number;
+}
 export default SearchResults
