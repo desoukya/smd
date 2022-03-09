@@ -6,7 +6,7 @@ const universities = require('./universities.json');
 app.get('/locations', function(req, res) {
   return res.send(locations);
 });
-app.post('/universities', function (req, res) {
+app.get('/universities', function (req, res) {
   return res.send(universities);
 });
 
