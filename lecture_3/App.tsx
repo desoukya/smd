@@ -23,14 +23,6 @@ const App = () => (
         component={SearchResults}
         options={{
           headerShown: true,
-          title: '',
-          headerRight: () => (
-            <Button
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="#fff"
-            />
-          ),
         }} 
       />
     </Stack.Navigator>

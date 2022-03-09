@@ -4,6 +4,7 @@ import * as axios from 'axios';
 import { Button, Dimensions, SafeAreaView, StyleSheet, Text } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import MapView from 'react-native-maps';
+import MapMarkers from "../components/MapMarkers";
 
 const SearchResults = () => {
   const route = useRoute<RouteProps>();
@@ -24,40 +25,34 @@ const SearchResults = () => {
     axios.default
       .get(`http://localhost:3000/locations/${term}`)
       .then(({ data }) => {
-        setCountry(data)
+        if (data) setCountry(data);
       });
   }, []);
 
   return (
     <SafeAreaView>
-      {/* <Text>country geocode: {JSON.stringify(country)}</Text> */}
-
-      {/* <SafeAreaView
-        style={{
-          position: 'absolute',//use absolute position to show button on top of the map
-          top: '50%', //for center align
-          alignSelf: 'flex-end' //for align to right
-        }}> */}
-        <Button
-          onPress={() => console.log('hello')}
-          title="Learn More"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-      {/* </SafeAreaView> */}
-
-      {(country) && latitudeDelta && longitudeDelta && <MapView
-        style={styles.map}
-        zoomControlEnabled={true}
-        provider='google'
-        onRegionChange={(region) => setViewport({ region })}
-        initialRegion={{
-          latitude: country.geometry.location.latitude,
-          longitude: country.geometry.location.longitude,
-          latitudeDelta, // delta between origin bounds and client viewport
-          longitudeDelta, // delta between origin bounds and client viewport
-        }}
+      <Button
+        onPress={() => console.log('List Univeristies Button')}
+        title="List Universities"
+        color="#841584"
+        accessibilityLabel="Learn more"
       />
+
+      {country && term && latitudeDelta && longitudeDelta &&
+        <MapView
+          style={styles.map}
+          zoomControlEnabled={true}
+          provider='google'
+          onRegionChange={(region) => setViewport({ region })}
+          initialRegion={{
+            latitude: country.geometry.location.latitude,
+            longitude: country.geometry.location.longitude,
+            latitudeDelta, // delta between origin bounds and client viewport
+            longitudeDelta, // delta between origin bounds and client viewport
+          }}
+        >
+          <MapMarkers country={term} />
+        </MapView>
       }
     </SafeAreaView>
   );

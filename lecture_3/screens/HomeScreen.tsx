@@ -17,6 +17,7 @@ const HomeScreen = () => {
           placeholder="Type Here..."
           onChangeText={(text: string) => setSearch(text)}
           value={search}
+          autoCapitalize='none'
         />
         <NavOptions term={search} />
       </View>
