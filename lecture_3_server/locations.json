@@ -2,17 +2,17 @@
   "EG": {
     "geometry": {
       "location": {
-        "latitude": 26.50224494934082,
-        "longitude": 29.87411880493164
+        "latitude": 30.04542,
+        "longitude": 31.242109
       },
       "bounds": {
         "northeast": {
-          "latitude": 31.667354583740234,
-          "longitude": 35.78834533691406
+          "latitude": 30.40546417236328,
+          "longitude": 31.89826011657715
         },
         "southwest": {
-          "latitude": 21.999191284179688,
-          "longitude": 24.698089599609375
+          "latitude": 29.712703704833984,
+          "longitude": 30.603200912475586
         }
       }
     }
