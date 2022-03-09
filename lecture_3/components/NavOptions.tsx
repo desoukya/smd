@@ -6,12 +6,12 @@ const data = [
   {
     id: 1,
     title: 'Google Search',
-    screen: 'SearchResults',
+    screen: 'MapScreen',
   },
   {
     id: 2,
     title: 'I\'m Feeling Lucky',
-    screen: 'SearchResults',
+    screen: 'MapScreen',
   }
 ]
 

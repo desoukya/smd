@@ -1,9 +1,8 @@
 import HomeScreen from './screens/HomeScreen';
-import SearchResults from './screens/SearchResults';
+import MapScreen from './screens/MapScreen';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,10 +18,11 @@ const App = () => (
         }} 
       />
       <Stack.Screen 
-        name="SearchResults" 
-        component={SearchResults}
+        name="MapScreen" 
+        component={MapScreen}
         options={{
           headerShown: true,
+          title: '',
         }} 
       />
     </Stack.Navigator>

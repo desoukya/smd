@@ -38,7 +38,6 @@ const SearchResults = () => {
         onPress={() => console.log('List Univeristies Button')}
         title="List Universities"
         color="#841584"
-        accessibilityLabel="Learn more"
       />
 
       {country && term && latitudeDelta && longitudeDelta &&
