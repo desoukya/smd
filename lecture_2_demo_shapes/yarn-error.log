@@ -1,0 +1,56 @@
+Arguments: 
+  /Users/desoukya/.nvm/versions/node/v16.13.2/bin/node /Users/desoukya/.nvm/versions/node/v16.13.2/bin/yarnpkg install
+
+PATH: 
+  /opt/homebrew/bin:/Users/desoukya/.nvm/versions/node/v16.13.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  16.13.2
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: self signed certificate in certificate chain
+      at TLSSocket.onConnectSecure (node:_tls_wrap:1530:34)
+      at TLSSocket.emit (node:events:390:28)
+      at TLSSocket._finishInit (node:_tls_wrap:944:8)
+      at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:725:12)
+
+npm manifest: 
+  {
+    "name": "lecture_2_demo",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "~44.0.0",
+      "expo-status-bar": "~1.2.0",
+      "react": "17.0.1",
+      "react-dom": "17.0.1",
+      "react-native": "0.64.3",
+      "react-native-web": "0.17.1"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.12.9",
+      "@types/react": "~17.0.21",
+      "@types/react-native": "~0.64.12",
+      "typescript": "~4.3.5"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

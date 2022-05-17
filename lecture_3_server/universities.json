@@ -1,0 +1,58 @@
+{
+  "EG": [
+    {
+      "name": "German Internal University",
+      "slug": "GIU",
+      "lat": 30.004183512078416,
+      "lng": 31.700479412499583,
+      "addressFmt": "Administrative Capital, Regional Ring Rd, Cairo Governorate Desert, Cairo Governorate",
+      "image": ""
+    },
+    {
+      "name": "German University in Cairo",
+      "slug": "GUC",
+      "lat": 29.987014316926583,
+      "lng": 31.441367261625764,
+      "addressFmt": "Al tagamoa, Gamal Abdel Nasser, New Cairo 3, Cairo Governorate",
+      "image": ""
+    },
+    {
+      "name": "American University in Cairo",
+      "slug": "AUC",
+      "lat": 30.018824835519567,
+      "lng": 31.501581964193065,
+      "addressFmt": "AUC Avenue, P.O. Box 74 New Cairo 11835, Egypt",
+      "image": ""
+    }
+  ],
+  "AE": [
+    {
+      "name": "American University in Dubai",
+      "slug": "AUC",
+      "lat": 25.091451877852908,
+      "lng": 55.156083533206434,
+      "addressFmt": "Sheikh Zayed Rd - Al Sufouh - Al Sufouh 2 - Dubai - United Arab Emirates",
+      "image": ""
+    }
+  ],
+  "GB": [
+    {
+      "name": "University of Cambridge",
+      "slug": "UC",
+      "lat": 52.3529481543808,
+      "lng": 0.15808590842544637,
+      "addressFmt": "The Old Schools, Trinity Ln, Cambridge CB2 1TN, United Kingdom",
+      "image": ""
+    }    
+  ],
+  "DE": [
+    {
+      "name": "Universität Hamburg",
+      "slug": "UH",
+      "lat": 53.566630572924716,
+      "lng": 9.984600173487783,
+      "addressFmt": "Universität Hamburg Mittelweg 177 20148 Hamburg",
+      "image": ""
+    }    
+  ]
+}

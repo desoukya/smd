@@ -1,0 +1,74 @@
+{
+  "EG": {
+    "geometry": {
+      "location": {
+        "latitude": 30.04542,
+        "longitude": 31.242109
+      },
+      "bounds": {
+        "northeast": {
+          "latitude": 30.40546417236328,
+          "longitude": 31.89826011657715
+        },
+        "southwest": {
+          "latitude": 29.712703704833984,
+          "longitude": 30.603200912475586
+        }
+      }
+    }
+  },
+  "AE": {
+    "geometry": {
+      "location": {
+        "latitude": 23.90383529663086,
+        "longitude": 54.338539123535156
+      },
+      "bounds": {
+        "northeast": {
+          "latitude": 26.078857421875,
+          "longitude": 56.379295349121094
+        },
+        "southwest": {
+          "latitude": 22.633319854736328,
+          "longitude": 51.533145904541016
+        }
+      }
+    }
+  },
+  "GB": {
+    "geometry": {
+      "location": {
+        "latitude": 53.9438362121582,
+        "longitude": -2.55056309700012
+      },
+      "bounds": {
+        "northeast": {
+          "latitude": 60.78219223022461,
+          "longitude": 12.539674758911133
+        },
+        "southwest": {
+          "latitude": 49.95780563354492,
+          "longitude": -18.279674530029297
+        }
+      }
+    }
+  },
+  "DE": {
+    "geometry": {
+      "location": {
+        "latitude": 51.09312438964844,
+        "longitude": 10.380208015441895
+      },
+      "bounds": {
+        "northeast": {
+          "latitude": 55.06619644165039,
+          "longitude": 15.039889335632324
+        },
+        "southwest": {
+          "latitude": 47.27577590942383,
+          "longitude": 5.865616798400879
+        }
+      }
+    }
+  }
+}
