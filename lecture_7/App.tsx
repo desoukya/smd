@@ -1,6 +1,6 @@
 // expo install expo-web-browser expo-auth-session expo-random
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image, Button } from 'react-native';
 import * as Google from 'expo-auth-session/providers/google';
 import * as WebBrowser from 'expo-web-browser';
@@ -9,9 +9,9 @@ import * as WebBrowser from 'expo-web-browser';
 WebBrowser.maybeCompleteAuthSession();
 
 export default function App() {
-  const [accessToken, setAccessToken] = React.useState();
-  const [userInfo, setUserInfo] = React.useState();
-  const [message, setMessage] = React.useState();
+  const [accessToken, setAccessToken] = useState();
+  const [userInfo, setUserInfo] = useState();
+  const [message, setMessage] = useState();
 
   const [request, response, promptAsync] = Google.useAuthRequest({
     androidClientId: "690170195561-shd7e6qong57hq6duojejrr8ejgn17ms.apps.googleusercontent.com",
@@ -19,7 +19,7 @@ export default function App() {
     expoClientId: "690170195561-ion4nitrb5hj634806eig1bnbsh6rjf6.apps.googleusercontent.com"
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     setMessage(JSON.stringify(response));
     console.log('response :>> ', response);
     if (response?.type === "success") {
@@ -30,9 +30,9 @@ export default function App() {
   async function getUserData() {
     console.log('accessToken :>> ', accessToken);
     let userInfoResponse = await fetch("https://www.googleapis.com/userinfo/v2/me", {
-      headers: { Authorization: `Bearer ${accessToken}`}
+      headers: { Authorization: `Bearer ${accessToken}` }
     });
-    
+
     userInfoResponse.json().then(data => {
       console.log('userInfoResponse :>> ', data);
       setUserInfo(data);
@@ -40,23 +40,21 @@ export default function App() {
   }
 
   function showUserInfo() {
-    if (userInfo) {
-      return (
-        <View style={styles.userInfo}>
-          <Image source={{uri: userInfo.picture}} style={styles.profilePic} />
-          <Text>Welcome {userInfo.name}</Text>
-          <Text>{userInfo.email}</Text>
-        </View>
-      );
-    }
+    return (
+      <View style={styles.userInfo}>
+        <Image source={{ uri: userInfo.picture }} style={styles.profilePic} />
+        <Text>Welcome {userInfo.name}</Text>
+        <Text>{userInfo.email}</Text>
+      </View>
+    );
   }
 
   return (
     <View style={styles.container}>
-      {showUserInfo()}
-      <Button 
+      {userInfo && showUserInfo()}
+      <Button
         title={accessToken ? "Get User Data" : "Login"}
-        onPress={accessToken ? getUserData : () => { promptAsync({useProxy: true, showInRecents: true}) }}
+        onPress={accessToken ? getUserData : () => { promptAsync({ useProxy: true, showInRecents: true }) }}
       />
       <StatusBar style="auto" />
     </View>
