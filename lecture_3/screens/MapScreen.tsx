@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import * as axios from 'axios';
-import { Button, Dimensions, SafeAreaView, StyleSheet, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import {default as axios} from 'axios';
+import { Dimensions, SafeAreaView, StyleSheet } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import MapView, { Marker } from 'react-native-maps';
 
@@ -11,20 +10,11 @@ const SearchResults = () => {
 
   const [country, setCountry] = useState<GeocodeResult>();
   const [universities, setUniversity] = useState<University[]>();
-  const [_, setViewport] = useState<Region>();
-
-  const { width, height } = Dimensions.get('window');
-  const ASPECT_RATIO = width / height;
-  let latitudeDelta, longitudeDelta;
-  if (country) {
-    latitudeDelta = country.geometry.bounds.northeast.latitude - country.geometry.bounds.northeast.longitude;
-    longitudeDelta = latitudeDelta * ASPECT_RATIO;
-  }
 
   useEffect(() => {
     Promise.all([
-      axios.default.get(`http://localhost:3000/locations/${term}`),
-      axios.default.get(`http://localhost:3000/universities/${term}`),
+      axios.get(`http://localhost:3000/locations/${term}`),
+      axios.get(`http://localhost:3000/universities/${term}`),
     ])
       .then(([{ data: locationResults }, { data: universitiesResults }]) => {
         if (locationResults) setCountry(locationResults);
@@ -34,23 +24,15 @@ const SearchResults = () => {
 
   return (
     <SafeAreaView>
-      <Button
-        onPress={() => console.log('List Univeristies Button')}
-        title="List Universities"
-        color="#841584"
-      />
-
-      {country && term && latitudeDelta && longitudeDelta &&
+      {country && term &&
         <MapView
           style={styles.map}
-          zoomControlEnabled={true}
           provider='google'
-          onRegionChange={(region) => setViewport({ region })}
           initialRegion={{
             latitude: country.geometry.location.latitude,
             longitude: country.geometry.location.longitude,
-            latitudeDelta, // delta between origin bounds and client viewport
-            longitudeDelta, // delta between origin bounds and client viewport
+            latitudeDelta: country.geometry.location.latitude,
+            longitudeDelta: country.geometry.location.longitude,
           }}
         >
           {
@@ -61,8 +43,7 @@ const SearchResults = () => {
                   latitude: marker.lat,
                   longitude: marker.lng,
                 }}
-                title={Marker.name}
-                description={Marker.name}>
+                title={marker.name}>
               </Marker>
             ))
           }
@@ -109,16 +90,6 @@ type GeometryResult = {
 }
 type GeocodeResult = {
   geometry: GeometryResult;
-}
-
-type RegionCoordinates = {
-  latitude: number;
-  longitude: number;
-  latitudeDelta: number;
-  longitudeDelta: number;
-}
-type Region = {
-  region: RegionCoordinates;
 }
 type University = {
   name: string;
